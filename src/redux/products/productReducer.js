@@ -1,5 +1,4 @@
-import INCREMENT from '../../redux/products/actiontype';
-import DECREMENT from '../../redux/products/actiontype';
+import { INCREMENT, DECREMENT } from "./actiontype"
 
 const InitialState = [
 
@@ -28,34 +27,68 @@ const InitialState = [
     },
 ]
 
-export const productReducer = (state = InitialState, action) => {
-    const { id } = action.payload
-    if (action.type === INCREMENT) {
+const productReducer = (state = InitialState, action) => {
+    // const { id  } = action.payload
+    // if (action.type === INCREMENT) {
 
 
-        state.map(product => {
-            if (product.id === id) {
-                return {
-                    ...product,
-                    quantity: product.quantity + 1
+    //     state.map(product => {
+    //         if (product.id === id) {
+    //             return {
+    //                 ...product,
+    //                 quantity: product.quantity + 1
+    //             }
+    //         }
+
+    //     })
+    // }
+    // if (action.type === DECREMENT) {
+
+
+    //     state.map(product => {
+    //         if (product.id === id) {
+    //             return {
+    //                 ...product,
+    //                 quantity: product.quantity - 1
+    //             }
+    //         }
+    //     })
+    // }
+
+
+
+    switch (action.type) {
+        case INCREMENT:
+
+            return state.map(p => {
+                if (p.id === action.payload.id) {
+                    return {
+                        ...p,
+                        quantity: p.quantity + 1,
+
+                    }
                 }
-            }
+                return p;
+            })
 
-        })
-    }
-    if (action.type === DECREMENT) {
+        case DECREMENT:
+            console.log("Decremnet action cliked")
+            return state.map(p => {
 
+                if (p.id === action.payload.id) {
+                    console.log("id mathced and id is", p.id, action.payload.id)
+                    return {
+                        ...p,
+                        quantity: p.quantity - 1,
+                    }
 
-        state.map(product => {
-            if (product.id === id) {
-                return {
-                    ...product,
-                    quantity: product.quantity - 1
                 }
-            }
-        })
+                return p
+            })
+        default:
+            return state
     }
-
-
 
 }
+
+export default productReducer;
