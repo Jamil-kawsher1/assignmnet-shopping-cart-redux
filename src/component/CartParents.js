@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemCard from './ItemCard';
 import Products from './Products';
+import ProductsParents from './ProductsParents';
 import TotalItem from './TotalItem';
 import TotalPrice from './TotalPrice';
 
@@ -16,7 +17,7 @@ const CartParents = () => {
             <div class="grid grid-cols-12 gap-6">
 
 
-                <Products />
+                <ProductsParents />
 
 
                 {/* ///grid */}
