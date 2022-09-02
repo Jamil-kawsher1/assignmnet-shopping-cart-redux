@@ -76,13 +76,15 @@ const productReducer = (state = InitialState, action) => {
             return state.map(p => {
 
                 if (p.id === action.payload.id) {
-                    console.log("id mathced and id is", p.id, action.payload.id)
+                    console.log(p);
                     return {
                         ...p,
                         quantity: p.quantity - 1,
                     }
 
+
                 }
+                console.log(p.quantity, p.title)
                 return p
             })
         default:

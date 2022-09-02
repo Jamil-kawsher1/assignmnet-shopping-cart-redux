@@ -4,11 +4,12 @@ import store from '../redux/store';
 import Products from './Products';
 
 const ProductsParents = () => {
-    const state = store.getState();
-    console.log(state)
+    // const state = store.getState();
+    const product = useSelector((state) => state)
+    // console.log(state)
     return (
         <>
-            {state.map((item, index) => <Products key={index} info={item} />)}
+            {product.map((item, index) => <Products key={index} info={item} />)}
 
 
         </>

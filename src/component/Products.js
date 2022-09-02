@@ -1,16 +1,24 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { DecrementProductAction } from '../redux/products/action';
 import store from '../redux/store';
 
 const Products = (props) => {
     const dispatch = useDispatch();
-    // const state = store.getState();
     const { id, title, quantity, price } = props.info;
+
+    // const quantityf = useSelector((state) => state.quantity)
+    // const state = store.getState();
+
+
+    console.log(title, quantity)
+
     const decremnethandeler = (value) => {
 
-        dispatch(DecrementProductAction(value))
+        dispatch(DecrementProductAction(value));
+
     }
+
     return (
 
         <div class="col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
