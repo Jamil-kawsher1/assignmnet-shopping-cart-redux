@@ -2,19 +2,22 @@
 
 import { DECREMENT, INCREMENT } from "./actiontype"
 
-export const IncrementProductAction = (id) => {
+export const IncrementCartAction = (id, title, quantity, price) => {
 
     return {
 
         type: INCREMENT,
         payload: {
-            id: id
+            id: id,
+            title: title,
+            quantity: quantity,
+            price: price
         }
     }
 
 
 }
-export const DecrementProductAction = (id) => {
+export const DecrementCartAction = (id) => {
 
     return {
 

@@ -72,11 +72,11 @@ const productReducer = (state = InitialState, action) => {
             })
 
         case DECREMENT:
-            console.log("Decremnet action cliked")
+            // console.log("Decremnet action cliked")
             return state.map(p => {
 
                 if (p.id === action.payload.id) {
-                    console.log(p);
+                    // console.log(p);
                     return {
                         ...p,
                         quantity: p.quantity - 1,
@@ -84,7 +84,7 @@ const productReducer = (state = InitialState, action) => {
 
 
                 }
-                console.log(p.quantity, p.title)
+                // console.log(p.quantity, p.title)
                 return p
             })
         default:

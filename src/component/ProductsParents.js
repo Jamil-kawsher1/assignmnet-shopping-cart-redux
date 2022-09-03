@@ -5,8 +5,9 @@ import Products from './Products';
 
 const ProductsParents = () => {
     // const state = store.getState();
-    const product = useSelector((state) => state)
-    // console.log(state)
+    const product = useSelector((state) => state.product);
+    const allproduct = useSelector((state) => state.cart)
+    console.log(allproduct)
     return (
         <>
             {product.map((item, index) => <Products key={index} info={item} />)}

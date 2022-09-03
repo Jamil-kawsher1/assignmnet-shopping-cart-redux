@@ -1,10 +1,11 @@
 import React from 'react';
 
-const ItemCard = () => {
+const ItemCard = (props) => {
+    const { id, title, quantity, price } = props.iteminfo;
     return (
         <div class="flex justify-between border-b-2 mb-2">
             <div class="text-lg py-2">
-                <p>Asus Vivobook X515MA</p>
+                <p>{title}</p>
             </div>
             <div class="text-lg py-2">
                 <div class="flex flex-row space-x-2 w-full items-center rounded-lg">

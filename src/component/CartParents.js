@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ItemCard from './ItemCard';
 import Products from './Products';
 import ProductsParents from './ProductsParents';
@@ -6,6 +7,9 @@ import TotalItem from './TotalItem';
 import TotalPrice from './TotalPrice';
 
 const CartParents = () => {
+
+    const itemsOfCard = useSelector((state) => state.cart);
+    // console.log(itemsOfCard)
     return (
         <div class="bg-gray-50 h-full md:h-screen">
             <div class="grid place-items-center">
@@ -27,7 +31,8 @@ const CartParents = () => {
 
                         {/* 
               singlee item of card */}
-                        <ItemCard />
+                        {/* <ItemCard /> */}
+                        {itemsOfCard.map(cardItem => <ItemCard iteminfo={cardItem} />)}
 
                         {/* //total item */}
                         <TotalItem />
