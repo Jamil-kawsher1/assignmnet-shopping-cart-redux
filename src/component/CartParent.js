@@ -1,15 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ItemCard from './ItemCard';
-import Products from './Products';
-import ProductsParents from './ProductsParents';
+import ItemCardmain from './ItemCardmain';
+import SingleProduct from './SingleProduct';
 import TotalItem from './TotalItem';
 import TotalPrice from './TotalPrice';
-
-const CartParents = () => {
-
+const CartParent = () => {
+    const product = useSelector((state) => state.product);
     const itemsOfCard = useSelector((state) => state.cart);
-    // console.log(itemsOfCard)
     return (
         <div class="bg-gray-50 h-full md:h-screen">
             <div class="grid place-items-center">
@@ -19,31 +16,36 @@ const CartParents = () => {
                 </h1>
             </div>
             <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
 
+                    {/* all product will be here */}
 
-                <ProductsParents />
+                    {product.map((item, index) => <SingleProduct key={index} info={item} />)}
 
+                </div>
 
-                {/* ///grid */}
+                {/* single products end here */}
                 <div class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
-                    {/* //CARD  parent*/}
                     <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
 
+                        {/* Itemcard will he here */}
+                        {itemsOfCard.map(cardItem => <ItemCardmain iteminfo={cardItem} />)}
                         {/* 
-              singlee item of card */}
-                        {/* <ItemCard /> */}
-                        {itemsOfCard.map(cardItem => <ItemCard iteminfo={cardItem} />)}
-
-                        {/* //total item */}
+                       TotalItem will be here */}
                         <TotalItem />
 
                     </div>
-                    {/* //total Price will be here */}
-                    <TotalPrice />
+
+                    {/* total price will be here */}
+                    <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
+                        <TotalPrice />
+                    </div>
+
                 </div>
             </div>
         </div>
+
     );
 };
 
-export default CartParents;
+export default CartParent;
