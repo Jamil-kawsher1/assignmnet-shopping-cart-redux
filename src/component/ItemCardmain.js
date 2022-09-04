@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { IncrementCartAction } from '../redux/cart/action';
-import { DecrementProductAction } from '../redux/products/action';
+import { DecrementCartAction, IncrementCartAction } from '../redux/cart/action';
+import { DecrementProductAction, IncrementProductAction } from '../redux/products/action';
 
 const ItemCardmain = (props) => {
     const dispatch = useDispatch()
@@ -13,6 +13,12 @@ const ItemCardmain = (props) => {
         dispatch(IncrementCartAction(id, title, quantity, price));
 
     }
+
+    const decremnethandeler = (id) => {
+        dispatch(IncrementProductAction(id))
+        dispatch(DecrementCartAction(id))
+
+    }
     return (
         <div class="flex justify-between border-b-2 mb-2">
             <div class="text-lg py-2">
@@ -20,7 +26,7 @@ const ItemCardmain = (props) => {
             </div>
             <div class="text-lg py-2">
                 <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
-                    <button
+                    <button onClick={() => decremnethandeler(id)}
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">

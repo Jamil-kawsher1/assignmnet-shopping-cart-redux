@@ -74,15 +74,14 @@ export const cartReducer = (state = cart, action) => {
 
         // }
         case DECREMENT:
-            const decrement = state.map(cartitem => {
+            state.map(cartitem => {
                 if (cartitem.id === action.payload.id) {
-                    return {
-                        ...cartitem,
-                        quantity: cartitem.quantity - 1,
-                    }
+                    console.log("Decremnet matched");
+                    console.log(cartitem)
+                    cartitem.quantity -= 1;
                 }
             })
-            return decrement
+
         default:
             return state
     }
